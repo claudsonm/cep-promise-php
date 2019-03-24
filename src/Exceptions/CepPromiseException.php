@@ -9,7 +9,7 @@ class CepPromiseException extends \Exception
      */
     protected $errors;
 
-    public function __construct(string $message = "", int $code = 0, array $errors = [], \Throwable $previous = null)
+    public function __construct(string $message = '', int $code = 0, array $errors = [], \Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
         $this->errors = $errors;
