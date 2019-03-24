@@ -57,11 +57,6 @@ class Address
             $address->{$name} = $data[$name] ?? null;
         }
 
-        return $address->toArray();
-    }
-
-    public function toArray()
-    {
-        return json_encode($this);
+        return $address;
     }
 }

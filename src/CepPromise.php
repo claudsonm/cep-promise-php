@@ -20,6 +20,11 @@ class CepPromise
 
     const ERROR_VALIDATION = 1;
 
+    /**
+     * @param string $cepRawValue
+     *
+     * @return \Claudsonm\CepPromise\Address
+     */
     public static function find(string $cepRawValue)
     {
         $promise = new FulfilledPromise($cepRawValue);
