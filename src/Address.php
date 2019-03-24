@@ -36,6 +36,7 @@ class Address
      * @var string
      */
     public $street;
+
     /**
      * O código do CEP.
      *

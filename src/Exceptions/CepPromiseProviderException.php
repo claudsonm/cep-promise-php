@@ -14,5 +14,4 @@ class CepPromiseProviderException extends \Exception
         parent::__construct($message);
         $this->provider = $provider;
     }
-    
 }
