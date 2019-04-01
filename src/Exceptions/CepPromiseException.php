@@ -19,4 +19,24 @@ class CepPromiseException extends \Exception
     {
         return $this->errors;
     }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        $errors = [];
+        foreach ($this->errors as $error) {
+            $errors[] = [
+                'provider' => $error->getProvider(),
+                'message' => $error->getMessage(),
+            ];
+        }
+
+        return [
+            'message' => $this->message,
+            'code' => $this->code,
+            'errors' => $errors,
+        ];
+    }
 }

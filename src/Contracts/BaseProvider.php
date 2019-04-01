@@ -2,7 +2,6 @@
 
 namespace Claudsonm\CepPromise\Contracts;
 
-use Claudsonm\CepPromise\Address;
 use GuzzleHttp\Client;
 
 abstract class BaseProvider implements ProviderInterface
@@ -61,12 +60,5 @@ abstract class BaseProvider implements ProviderInterface
     public function toArray()
     {
         return [$this->providerIdentifier => $this->promise];
-    }
-
-    protected function createAddressObject()
-    {
-        return function (array $cepData) {
-            return Address::create($cepData);
-        };
     }
 }

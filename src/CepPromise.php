@@ -6,6 +6,7 @@ use Claudsonm\CepPromise\Exceptions\CepPromiseException;
 use Claudsonm\CepPromise\Providers\CepAbertoProvider;
 use Claudsonm\CepPromise\Providers\CorreiosProvider;
 use Claudsonm\CepPromise\Providers\ViaCepProvider;
+use Exception;
 use GuzzleHttp\Promise;
 use GuzzleHttp\Promise\FulfilledPromise;
 
@@ -18,23 +19,33 @@ class CepPromise
 {
     const CEP_SIZE = 8;
 
-    const ERROR_VALIDATION = 1;
+    const ERROR_PROVIDER_SERVICE = 2;
+
+    const ERROR_VALIDATION_CODE = 1;
 
     /**
-     * @param string $cepRawValue
+     * Normaliza o CEP dado e efetua as requisições.
+     *
+     * @param $cepRawValue
+     *
+     * @throws \Claudsonm\CepPromise\Exceptions\CepPromiseException
      *
      * @return \Claudsonm\CepPromise\Address
      */
-    public static function find(string $cepRawValue)
+    public static function find($cepRawValue)
     {
         $promise = new FulfilledPromise($cepRawValue);
-
-        return $promise
+        $cepData = $promise
+            ->then(call_user_func([__CLASS__, 'validateInputType']))
             ->then(call_user_func([__CLASS__, 'removeSpecialCharacters']))
             ->then(call_user_func([__CLASS__, 'validateInputLength']))
             ->then(call_user_func([__CLASS__, 'leftPadWithZeros']))
             ->then(call_user_func([__CLASS__, 'fetchCepFromProviders']))
+            ->otherwise(call_user_func([__CLASS__, 'handleProvidersError']))
+            ->otherwise(call_user_func([__CLASS__, 'throwApplicationError']))
             ->wait();
+
+        return Address::create($cepData);
     }
 
     private function fetchCepFromProviders()
@@ -50,9 +61,24 @@ class CepPromise
         };
     }
 
+    private function handleProvidersError()
+    {
+        return function (Exception $onRejected) {
+            if ($onRejected instanceof Promise\AggregateException) {
+                throw new CepPromiseException(
+                    'Todos os serviços de CEP retornaram erro.',
+                    self::ERROR_PROVIDER_SERVICE,
+                    $onRejected->getReason()
+                );
+            }
+
+            throw $onRejected;
+        };
+    }
+
     private function leftPadWithZeros()
     {
-        return function ($cepCleanValue) {
+        return function (string $cepCleanValue) {
             return str_pad($cepCleanValue, self::CEP_SIZE, '0', STR_PAD_LEFT);
         };
     }
@@ -61,6 +87,17 @@ class CepPromise
     {
         return function (string $cepRawValue) {
             return preg_replace('/\D+/', '', $cepRawValue);
+        };
+    }
+
+    private function throwApplicationError()
+    {
+        return function (Exception $exception) {
+            throw new CepPromiseException(
+                $exception->getMessage(),
+                $exception->getCode(),
+                $exception->getErrors() ?? []
+            );
         };
     }
 
@@ -73,10 +110,32 @@ class CepPromise
 
             throw new CepPromiseException(
                 'CEP deve conter exatamente '.self::CEP_SIZE.' caracteres.',
-                self::ERROR_VALIDATION,
+                self::ERROR_VALIDATION_CODE,
                 [
-                    'message' => 'CEP informado possui mais do que '.self::CEP_SIZE.' caracteres.',
-                    'service' => 'cep_validation',
+                    [
+                        'message' => 'CEP informado possui mais do que '.self::CEP_SIZE.' caracteres.',
+                        'service' => 'cep_validation',
+                    ],
+                ]
+            );
+        };
+    }
+
+    private function validateInputType()
+    {
+        return function ($cepRawValue) {
+            if (is_string($cepRawValue) || is_integer($cepRawValue)) {
+                return $cepRawValue;
+            }
+
+            throw new CepPromiseException(
+                'Erro ao inicializar a instância do CepPromise.',
+                self::ERROR_VALIDATION_CODE,
+                [
+                    [
+                        'message' => 'Você deve informar o CEP utilizando uma string ou um inteiro.',
+                        'service' => 'cep_validation',
+                    ],
                 ]
             );
         };
