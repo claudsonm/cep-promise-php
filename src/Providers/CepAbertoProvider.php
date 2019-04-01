@@ -3,14 +3,21 @@
 namespace Claudsonm\CepPromise\Providers;
 
 use Claudsonm\CepPromise\Contracts\BaseProvider;
-use Claudsonm\CepPromise\Exceptions\CepPromiseException;
 use Claudsonm\CepPromise\Exceptions\CepPromiseProviderException;
+use Exception;
 use GuzzleHttp\Exception\RequestException;
 use Psr\Http\Message\ResponseInterface;
 
 class CepAbertoProvider extends BaseProvider
 {
     const CEP_ABERTO_TOKEN = '37d718d2984e6452584a76d3d59d3a26';
+
+    /**
+     * O nome identificador do provedor de serviço.
+     *
+     * @var string
+     */
+    public $providerIdentifier = 'cep_aberto';
 
     /**
      * Cria a Promise para obter os dados de um CEP no provedor do serviço.
@@ -33,7 +40,6 @@ class CepAbertoProvider extends BaseProvider
             ->then(call_user_func([__CLASS__, 'analyzeAndParseResponse']))
             ->then(call_user_func([__CLASS__, 'checkForViaCepError']))
             ->then(call_user_func([__CLASS__, 'extractCepValuesFromResponse']))
-            ->then(call_user_func([__CLASS__, 'createAddressObject']))
             ->otherwise(call_user_func([__CLASS__, 'throwApplicationError']));
 
         return $this->promise;
@@ -50,32 +56,38 @@ class CepAbertoProvider extends BaseProvider
 
     private function checkForViaCepError()
     {
-        return function (array $responseObject) {
-            if (! count($responseObject)) {
-                throw new CepPromiseException('CEP não encontrado na base do Cep Aberto.');
+        return function (array $responseArray) {
+            if (! count($responseArray)) {
+                throw new Exception('CEP não encontrado na base do CEP Aberto.');
             }
 
-            return $responseObject;
+            return $responseArray;
         };
     }
 
     private function extractCepValuesFromResponse()
     {
-        return function (array $responseObject) {
+        return function (array $responseArray) {
             return [
-                'zipCode' => $responseObject['cep'],
-                'state' => $responseObject['estado'],
-                'city' => $responseObject['cidade'],
-                'district' => $responseObject['bairro'],
-                'street' => $responseObject['logradouro'],
+                'zipCode' => $responseArray['cep'],
+                'state' => $responseArray['estado'],
+                'city' => $responseArray['cidade'],
+                'district' => $responseArray['bairro'],
+                'street' => $responseArray['logradouro'],
             ];
         };
     }
 
     private function throwApplicationError()
     {
-        return function (RequestException $error) {
-            throw new CepPromiseProviderException($error->getMessage(), $this->providerIdentifier);
+        return function (Exception $exception) {
+            if ($exception instanceof RequestException) {
+                $message = 'Erro ao se conectar com o serviço CEP Aberto.';
+            }
+            throw new CepPromiseProviderException(
+                $message ?? $exception->getMessage(),
+                $this->providerIdentifier
+            );
         };
     }
 }

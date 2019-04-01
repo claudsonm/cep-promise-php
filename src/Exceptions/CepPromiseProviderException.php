@@ -14,4 +14,12 @@ class CepPromiseProviderException extends \Exception
         parent::__construct($message);
         $this->provider = $provider;
     }
+
+    /**
+     * @return string
+     */
+    public function getProvider(): string
+    {
+        return $this->provider;
+    }
 }

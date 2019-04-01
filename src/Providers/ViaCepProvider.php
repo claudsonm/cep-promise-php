@@ -3,11 +3,18 @@
 namespace Claudsonm\CepPromise\Providers;
 
 use Claudsonm\CepPromise\Contracts\BaseProvider;
-use Claudsonm\CepPromise\Exceptions\CepPromiseException;
+use Claudsonm\CepPromise\Exceptions\CepPromiseProviderException;
+use Exception;
+use GuzzleHttp\Exception\RequestException;
 use Psr\Http\Message\ResponseInterface;
 
 class ViaCepProvider extends BaseProvider
 {
+    /**
+     * O nome identificador do provedor de serviço.
+     *
+     * @var string
+     */
     public $providerIdentifier = 'via_cep';
 
     /**
@@ -30,7 +37,7 @@ class ViaCepProvider extends BaseProvider
             ->then(call_user_func([__CLASS__, 'analyzeAndParseResponse']))
             ->then(call_user_func([__CLASS__, 'checkForViaCepError']))
             ->then(call_user_func([__CLASS__, 'extractCepValuesFromResponse']))
-            ->then(call_user_func([__CLASS__, 'createAddressObject']));
+            ->otherwise(call_user_func([__CLASS__, 'throwApplicationError']));
 
         return $this->promise;
     }
@@ -46,25 +53,38 @@ class ViaCepProvider extends BaseProvider
 
     private function checkForViaCepError()
     {
-        return function (array $responseData) {
-            if (isset($responseData['erro']) && true === $responseData['erro']) {
-                throw new CepPromiseException('CEP não encontrado na base do ViaCEP.');
+        return function (array $responseArray) {
+            if (isset($responseArray['erro']) && true === $responseArray['erro']) {
+                throw new Exception('CEP não encontrado na base do ViaCEP.');
             }
 
-            return $responseData;
+            return $responseArray;
         };
     }
 
     private function extractCepValuesFromResponse()
     {
-        return function (array $responseObject) {
+        return function (array $responseArray) {
             return [
-                'zipCode' => str_replace('-', '', $responseObject['cep']),
-                'state' => $responseObject['uf'],
-                'city' => $responseObject['localidade'],
-                'district' => $responseObject['bairro'],
-                'street' => $responseObject['logradouro'],
+                'zipCode' => str_replace('-', '', $responseArray['cep']),
+                'state' => $responseArray['uf'],
+                'city' => $responseArray['localidade'],
+                'district' => $responseArray['bairro'],
+                'street' => $responseArray['logradouro'],
             ];
+        };
+    }
+
+    private function throwApplicationError()
+    {
+        return function (Exception $exception) {
+            if ($exception instanceof RequestException) {
+                $message = 'Erro ao se conectar com o serviço ViaCEP.';
+            }
+            throw new CepPromiseProviderException(
+                $message ?? $exception->getMessage(),
+                $this->providerIdentifier
+            );
         };
     }
 }
