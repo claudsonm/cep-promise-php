@@ -81,6 +81,7 @@ class ViaCepProvider extends BaseProvider
             if ($exception instanceof RequestException) {
                 $message = 'Erro ao se conectar com o serviço ViaCEP.';
             }
+
             throw new CepPromiseProviderException(
                 $message ?? $exception->getMessage(),
                 $this->providerIdentifier

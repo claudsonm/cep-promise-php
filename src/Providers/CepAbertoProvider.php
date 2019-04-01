@@ -84,6 +84,7 @@ class CepAbertoProvider extends BaseProvider
             if ($exception instanceof RequestException) {
                 $message = 'Erro ao se conectar com o serviço CEP Aberto.';
             }
+
             throw new CepPromiseProviderException(
                 $message ?? $exception->getMessage(),
                 $this->providerIdentifier
