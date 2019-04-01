@@ -124,7 +124,7 @@ class CepPromise
     private function validateInputType()
     {
         return function ($cepRawValue) {
-            if (is_string($cepRawValue) || is_integer($cepRawValue)) {
+            if (is_string($cepRawValue) || is_int($cepRawValue)) {
                 return $cepRawValue;
             }
 
