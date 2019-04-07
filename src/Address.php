@@ -45,7 +45,7 @@ class Address
     public $zipCode;
 
     /**
-     * Cria uma nova instância da classe de endereços.
+     * Cria uma nova instância da classe a partir de um array associativo.
      *
      * @param array $data
      *
@@ -59,5 +59,10 @@ class Address
         }
 
         return $address;
+    }
+
+    public function toArray()
+    {
+        return (array) $this;
     }
 }
