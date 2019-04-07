@@ -7,7 +7,7 @@ use Claudsonm\CepPromise\CepPromise;
 use Claudsonm\CepPromise\Exceptions\CepPromiseException;
 use PHPUnit\Framework\TestCase;
 
-class CepPromiseTest extends TestCase
+class CepPromiseFeatureTest extends TestCase
 {
     public function testExceptionFetchingInvalidCep()
     {
