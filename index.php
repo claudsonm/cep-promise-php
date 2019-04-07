@@ -8,7 +8,7 @@ require 'vendor/autoload.php';
 header('Content-Type: application/json');
 
 try {
-    $response = CepPromise::find(49040610);
+    $response = CepPromise::fetch(49040610);
 } catch (CepPromiseException $e) {
     $response = $e->toArray();
 }

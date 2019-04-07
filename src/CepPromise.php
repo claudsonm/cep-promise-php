@@ -19,7 +19,7 @@ class CepPromise
 {
     const CEP_SIZE = 8;
 
-    const ERROR_PROVIDER_SERVICE = 2;
+    const ERROR_PROVIDER_CODE = 2;
 
     const ERROR_VALIDATION_CODE = 1;
 
@@ -32,7 +32,7 @@ class CepPromise
      *
      * @return \Claudsonm\CepPromise\Address
      */
-    public static function find($cepRawValue)
+    public static function fetch($cepRawValue)
     {
         $promise = new FulfilledPromise($cepRawValue);
         $cepData = $promise
@@ -67,7 +67,7 @@ class CepPromise
             if ($onRejected instanceof Promise\AggregateException) {
                 throw new CepPromiseException(
                     'Todos os serviços de CEP retornaram erro.',
-                    self::ERROR_PROVIDER_SERVICE,
+                    self::ERROR_PROVIDER_CODE,
                     $onRejected->getReason()
                 );
             }
