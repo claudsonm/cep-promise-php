@@ -4,12 +4,21 @@ namespace Claudsonm\CepPromise\Tests\Unit;
 
 use Claudsonm\CepPromise\CepPromise;
 use Claudsonm\CepPromise\Exceptions\CepPromiseException;
-use Claudsonm\CepPromise\Providers\ViaCepProvider;
 use PHPUnit\Framework\TestCase;
 use ReflectionMethod;
 
 class CepPromiseUnitTest extends TestCase
 {
+    public function testErrorTryingToFetchPassingAFunction()
+    {
+        $this->expectException(CepPromiseException::class);
+        $this->expectExceptionMessage('Erro ao inicializar a instância do CepPromise.');
+        $this->expectExceptionCode(1);
+        CepPromise::fetch(function () {
+            return 'You shall not pass!';
+        });
+    }
+
     public function testErrorTryingToFetchPassingAnArray()
     {
         $this->expectException(CepPromiseException::class);
@@ -24,16 +33,6 @@ class CepPromiseUnitTest extends TestCase
         $this->expectExceptionMessage('Erro ao inicializar a instância do CepPromise.');
         $this->expectExceptionCode(1);
         CepPromise::fetch((object) ['top_gear' => '1000', 'gta' => '900']);
-    }
-
-    public function testErrorTryingToFetchPassingAFunction()
-    {
-        $this->expectException(CepPromiseException::class);
-        $this->expectExceptionMessage('Erro ao inicializar a instância do CepPromise.');
-        $this->expectExceptionCode(1);
-        CepPromise::fetch(function () {
-            return 'You shall not pass!';
-        });
     }
 
     public function testErrorTryingToFetchWithoutArgument()
@@ -51,11 +50,5 @@ class CepPromiseUnitTest extends TestCase
     {
         $fetchMethod = new ReflectionMethod(CepPromise::class, 'fetch');
         $this->assertTrue($fetchMethod->isStatic());
-    }
-
-    public function testPromiseFulfilledWithCorrectAddress()
-    {
-        // https://viacep.com.br/ws/$cep/json
-        
     }
 }
