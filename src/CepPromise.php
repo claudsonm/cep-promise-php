@@ -48,7 +48,7 @@ class CepPromise
         return Address::create($cepData);
     }
 
-    private function fetchCepFromProviders()
+    private static function fetchCepFromProviders()
     {
         return function (string $cepWithLeftPad) {
             $promises = array_merge(
@@ -61,7 +61,7 @@ class CepPromise
         };
     }
 
-    private function handleProvidersError()
+    private static function handleProvidersError()
     {
         return function (Exception $onRejected) {
             if ($onRejected instanceof Promise\AggregateException) {
@@ -76,21 +76,21 @@ class CepPromise
         };
     }
 
-    private function leftPadWithZeros()
+    private static function leftPadWithZeros()
     {
         return function (string $cepCleanValue) {
             return str_pad($cepCleanValue, self::CEP_SIZE, '0', STR_PAD_LEFT);
         };
     }
 
-    private function removeSpecialCharacters()
+    private static function removeSpecialCharacters()
     {
         return function (string $cepRawValue) {
             return preg_replace('/\D+/', '', $cepRawValue);
         };
     }
 
-    private function throwApplicationError()
+    private static function throwApplicationError()
     {
         return function (Exception $exception) {
             throw new CepPromiseException(
@@ -101,7 +101,7 @@ class CepPromise
         };
     }
 
-    private function validateInputLength()
+    private static function validateInputLength()
     {
         return function (string $cepNumbers) {
             if (strlen($cepNumbers) <= self::CEP_SIZE) {
@@ -121,7 +121,7 @@ class CepPromise
         };
     }
 
-    private function validateInputType()
+    private static function validateInputType()
     {
         return function ($cepRawValue) {
             if (is_string($cepRawValue) || is_int($cepRawValue)) {
