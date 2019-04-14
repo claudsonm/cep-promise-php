@@ -41,7 +41,7 @@ use Claudsonm\CepPromise\CepPromise;
 
 require 'vendor/autoload.php';
 
-$addressObject = CepPromise::fetch(49040610);
+$address = CepPromise::fetch(49040610);
 
 /* 
 Claudsonm\CepPromise\Address Object
@@ -65,7 +65,7 @@ use Claudsonm\CepPromise\CepPromise;
 
 require 'vendor/autoload.php';
 
-$addressArray = CepPromise::fetch('78710857')->toArray();
+$address = CepPromise::fetch('78710857')->toArray();
 
 /*
  Array
@@ -89,12 +89,12 @@ use Claudsonm\CepPromise\CepPromise;
 
 require 'vendor/autoload.php';
 
-$addressObject = CepPromise::fetch('59067-540');
-echo $addressObject->zipCode;
-echo $addressObject->street;
-echo $addressObject->district;
-echo $addressObject->city;
-echo $addressObject->state;
+$address = CepPromise::fetch('59067-540');
+echo $address->zipCode;
+echo $address->street;
+echo $address->district;
+echo $address->city;
+echo $address->state;
 
 /*
 '59067540'
