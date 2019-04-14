@@ -1,4 +1,5 @@
 # CEP Promise PHP
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 [![Build Status](https://travis-ci.org/claudsonm/cep-promise-php.svg?branch=master)](https://travis-ci.org/claudsonm/cep-promise-php)
 [![StyleCI](https://github.styleci.io/repos/177436507/shield?branch=master)](https://github.styleci.io/repos/177436507)
@@ -152,3 +153,14 @@ Array
 )
 */
 ```
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table><tr><td align="center"><a href="https://github.com/claudsonm"><img src="https://avatars3.githubusercontent.com/u/4139808?v=4" width="100px;" alt="Claudson Martins"/><br /><sub><b>Claudson Martins</b></sub></a><br /><a href="#projectManagement-claudsonm" title="Project Management">📆</a> <a href="#maintenance-claudsonm" title="Maintenance">🚧</a> <a href="https://github.com/claudsonm/cep-promise-php/commits?author=claudsonm" title="Code">💻</a> <a href="https://github.com/claudsonm/cep-promise-php/commits?author=claudsonm" title="Documentation">📖</a> <a href="#example-claudsonm" title="Examples">💡</a> <a href="#business-claudsonm" title="Business development">💼</a> <a href="#tutorial-claudsonm" title="Tutorials">✅</a></td></tr></table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
