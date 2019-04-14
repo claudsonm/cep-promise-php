@@ -1,8 +1,7 @@
 # CEP Promise PHP
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
-
 [![Build Status](https://travis-ci.org/claudsonm/cep-promise-php.svg?branch=master)](https://travis-ci.org/claudsonm/cep-promise-php)
 [![StyleCI](https://github.styleci.io/repos/177436507/shield?branch=master)](https://github.styleci.io/repos/177436507)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 Um pacote para busca de CEPs em diversos serviços utilizando [Promises/A+](https://promisesaplus.com/). 
 Inspirado no pacote [CEP Promise](https://github.com/filipedeschamps/cep-promise) 
@@ -153,9 +152,10 @@ Array
 )
 */
 ```
-## Contributors
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+## Contribuidores
+
+Um muito obrigado a todos os serumaninhos que contribuiram com este repositório:
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
@@ -163,4 +163,4 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+Este projeto segue a especificação do [all-contributors](https://github.com/all-contributors/all-contributors). Contribuições de qualquer natureza são bem vindas!
