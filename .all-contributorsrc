@@ -1,0 +1,29 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "claudsonm",
+      "name": "Claudson Martins",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4139808?v=4",
+      "profile": "https://github.com/claudsonm",
+      "contributions": [
+        "projectManagement",
+        "maintenance",
+        "code",
+        "doc",
+        "example",
+        "business",
+        "tutorial"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "cep-promise-php",
+  "projectOwner": "claudsonm",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
