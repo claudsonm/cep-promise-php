@@ -49,7 +49,7 @@ class Address
      *
      * @param array $data
      *
-     * @return \Claudsonm\CepPromise\Address
+     * @return Address
      */
     public static function create(array $data = [])
     {
@@ -61,6 +61,11 @@ class Address
         return $address;
     }
 
+    /**
+     * Converte a instância da classe em um array associativo.
+     *
+     * @return array
+     */
     public function toArray()
     {
         return (array) $this;
