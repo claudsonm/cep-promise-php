@@ -11,7 +11,8 @@ use Claudsonm\CepPromise\Providers\CepAbertoProvider;
 use Claudsonm\CepPromise\Exceptions\CepPromiseException;
 
 /**
- * Classe responsável por receber o CEP e disparar as requisições aos providers.
+ * Efetua a consulta pelas informações de um CEP em diferentes serviços de
+ * forma concorrente, retornando a resposta mais rápida..
  *
  * @author Claudson Martins <claudson@outlook.com>
  */
@@ -24,23 +25,21 @@ class CepPromise
     const ERROR_VALIDATION_CODE = 1;
 
     /**
-     * Dispara a cadeia de execução para obtenção das informações do CEP dado.
+     * Busca as informações referente ao CEP informado.
      *
-     * @param $cepRawValue
-     *
-     * @throws CepPromiseException
-     *
+     * @param  string|int          $cep
      * @return Address
+     * @throws CepPromiseException
      */
-    public static function fetch($cepRawValue)
+    public static function fetch($cep)
     {
-        return (new self())->run($cepRawValue);
+        return (new self())->run($cep);
     }
 
     /**
-     * Define o encadeamento das promises.
+     * Dispara a cadeia de execução para obtenção das informações do CEP dado.
      *
-     * @param $cepRawValue
+     * @param  string|int $cepRawValue
      * @return Address
      */
     public function run($cepRawValue): Address
@@ -108,8 +107,8 @@ class CepPromise
 
     private function leftPadWithZeros()
     {
-        return function (string $cepCleanValue) {
-            return str_pad($cepCleanValue, self::CEP_SIZE, '0', STR_PAD_LEFT);
+        return function (string $cepSanitized) {
+            return str_pad($cepSanitized, self::CEP_SIZE, '0', STR_PAD_LEFT);
         };
     }
 
