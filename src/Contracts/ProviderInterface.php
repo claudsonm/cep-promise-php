@@ -2,6 +2,8 @@
 
 namespace Claudsonm\CepPromise\Contracts;
 
+use GuzzleHttp\Promise\Promise;
+
 interface ProviderInterface
 {
     /**
@@ -9,7 +11,7 @@ interface ProviderInterface
      *
      * @param string $cep
      *
-     * @return \GuzzleHttp\Promise\Promise
+     * @return Promise
      */
     public function makePromise(string $cep);
 }
