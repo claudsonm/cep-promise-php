@@ -27,41 +27,19 @@ class CepPromiseFeatureTest extends TestCase
 
     public function testFetchingUsingValidIntegerWithoutLeadingZeros()
     {
-        $addressRetrieved = CepPromise::fetch(5010000);
-        $this->assertInstanceOf(Address::class, $addressRetrieved);
-
-        return $addressRetrieved;
+        $address = CepPromise::fetch(8542130);
+        $this->assertInstanceOf(Address::class, $address);
+        $this->assertEquals('Ferraz de Vasconcelos', $address->city);
+        $this->assertEquals('Cidade Kemel', $address->district);
+        $this->assertEquals('SP', $address->state);
+        $this->assertEquals('Avenida Luiz Rosa da Costa', $address->street);
+        $this->assertEquals('08542130', $address->zipCode);
     }
 
     public function testFetchingUsingValidStringWithLeadingZeros()
     {
-        $addressRetrieved = CepPromise::fetch('05010000');
-        $this->assertInstanceOf(Address::class, $addressRetrieved);
-
-        return $addressRetrieved;
-    }
-
-    /**
-     * @depends testFetchingUsingValidIntegerWithoutLeadingZeros
-     *
-     * @param \Claudsonm\CepPromise\Address $address
-     */
-    public function testInformationRetrievedFromIntegerWithoutLeadingZeros(Address $address)
-    {
-        $this->assertEquals('São Paulo', $address->city);
-        $this->assertEquals('Perdizes', $address->district);
-        $this->assertEquals('SP', $address->state);
-        $this->assertEquals('Rua Caiubi', $address->street);
-        $this->assertEquals('05010000', $address->zipCode);
-    }
-
-    /**
-     * @depends testFetchingUsingValidStringWithLeadingZeros
-     *
-     * @param \Claudsonm\CepPromise\Address $address
-     */
-    public function testInformationRetrievedFromStringWithLeadingZeros(Address $address)
-    {
+        $address = CepPromise::fetch('05010000');
+        $this->assertInstanceOf(Address::class, $address);
         $this->assertEquals('São Paulo', $address->city);
         $this->assertEquals('Perdizes', $address->district);
         $this->assertEquals('SP', $address->state);

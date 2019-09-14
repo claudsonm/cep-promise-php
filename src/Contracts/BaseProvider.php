@@ -3,6 +3,7 @@
 namespace Claudsonm\CepPromise\Contracts;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Promise\Promise;
 
 abstract class BaseProvider implements ProviderInterface
 {
@@ -16,14 +17,14 @@ abstract class BaseProvider implements ProviderInterface
     /**
      * O cliente HTTP utilizado para realizar os requests.
      *
-     * @var \GuzzleHttp\Client
+     * @var Client
      */
     protected $client;
 
     /**
      * A instância da Promise para consulta no serviço de busca.
      *
-     * @var \GuzzleHttp\Promise\Promise
+     * @var Promise
      */
     protected $promise;
 
