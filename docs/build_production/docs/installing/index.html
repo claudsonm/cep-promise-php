@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="Passo a passo de como instalar o pacote em seu projeto">
+
+        <meta property="og:site_name" content="CEP Promise PHP"/>
+        <meta property="og:title" content="Instruções de Instalação | CEP Promise PHP"/>
+        <meta property="og:description" content="Passo a passo de como instalar o pacote em seu projeto"/>
+        <meta property="og:url" content="https://my-jigsaw-docs.com/docs/installing"/>
+        <meta property="og:image" content="/assets/img/logo.png"/>
+        <meta property="og:type" content="website"/>
+
+        <meta name="twitter:image:alt" content="CEP Promise PHP">
+        <meta name="twitter:card" content="summary_large_image">
+
+        
+        <title>CEP Promise PHP | Instruções de Instalação</title>
+
+        <link rel="home" href="https://my-jigsaw-docs.com">
+        <link rel="icon" href="/favicon.ico">
+
+        
+                    <!-- Insert analytics code here -->
+        
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=d9d88be25a2078a81fd9">
+
+            </head>
+
+    <body class="flex flex-col justify-between min-h-screen bg-gray-100 text-gray-800 leading-normal font-sans">
+        <header class="flex items-center shadow bg-white border-b h-24 mb-8 py-4" role="banner">
+            <div class="container flex items-center max-w-8xl mx-auto px-4 lg:px-8">
+                <div class="flex items-center">
+                    <a href="/" title="CEP Promise PHP home" class="inline-flex items-center">
+                        <img class="h-8 md:h-10 mr-3" src="/assets/img/logo.svg" alt="CEP Promise PHP logo" />
+
+                        <h1 class="text-lg md:text-2xl text-blue-900 font-semibold hover:text-blue-600 my-0 pr-4">CEP Promise PHP</h1>
+                    </a>
+                </div>
+
+                <div class="flex flex-1 justify-end items-center text-right md:pl-10">
+                                    </div>
+            </div>
+
+                <button class="flex justify-center items-center bg-blue-500 border border-blue-500 h-10 mr-4 px-5 rounded-full lg:hidden focus:outline-none"
+    onclick="navMenu.toggle()"
+>
+    <svg id="js-nav-menu-show" xmlns="http://www.w3.org/2000/svg"
+        class="fill-current text-white h-9 w-4" viewBox="0 0 32 32"
+    >
+        <path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/>
+    </svg>
+
+    <svg id="js-nav-menu-hide" xmlns="http://www.w3.org/2000/svg"
+        class="hidden fill-current text-white h-9 w-4" viewBox="0 0 36 30"
+    >
+        <polygon points="32.8,4.4 28.6,0.2 18,10.8 7.4,0.2 3.2,4.4 13.8,15 3.2,25.6 7.4,29.8 18,19.2 28.6,29.8 32.8,25.6 22.2,15 "/>
+    </svg>
+</button>
+
+        </header>
+
+        <main role="main" class="w-full flex-auto">
+            <section class="container max-w-8xl mx-auto px-6 md:px-8 py-4">
+    <div class="flex flex-col lg:flex-row">
+        <nav id="js-nav-menu" class="nav-menu hidden lg:block">
+            <ul class="my-0">
+            <li class="pl-4">
+            
+        <a href="/docs/installing"
+            class="lvl0  active font-semibold text-blue-500 nav-menu__item hover:text-blue-500"
+        >
+            Instruções de Instalação
+        </a>
+    
+    </li>
+            <li class="pl-4">
+            
+        <a href="/docs/examples"
+            class="lvl0   nav-menu__item hover:text-blue-500"
+        >
+            Exemplos de Utilização
+        </a>
+    
+    </li>
+            <li class="pl-4">
+            
+        <a href="/docs/about"
+            class="lvl0   nav-menu__item hover:text-blue-500"
+        >
+            Sobre o pacote
+        </a>
+    
+    </li>
+    </ul>
+        </nav>
+
+        <div class="DocSearch-content w-full lg:w-3/5 break-words pb-16 lg:pl-4" v-pre>
+            <p>Para saber mais sobre o CEP Promise PHP, visite a página contendo algumas informações
+<a href="/docs/about">sobre o pacote</a>.</p>
+<h1 id="installing">Instruções de Instalação</h1>
+<p>A maneira mais recomendada de instalar o pacote é via Composer. Obtê-lo é tão simples
+quanto executar o seguinte comando: <code>composer require claudsonm/cep-promise-php</code>.</p>
+<p>Após instalar você precisará importar o autoloader do Composer em seus scripts PHP
+para ter acesso às dependências instaladas através dele. Para isso adicione <code>require 'vendor/autoload.php';</code>
+nos arquivos PHP nos quais deseja utilizar qualquer uma das dependências.</p>        </div>
+    </div>
+</section>
+        </main>
+
+        <script src="/assets/build/js/main.js?id=9677cb0adaf2b707a8ff"></script>
+
+        <script>
+    const navMenu = {
+        toggle() {
+            const menu = document.getElementById('js-nav-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('lg:block');
+            document.getElementById('js-nav-menu-hide').classList.toggle('hidden');
+            document.getElementById('js-nav-menu-show').classList.toggle('hidden');
+        },
+    }
+</script>
+
+        <footer class="bg-white text-center text-sm mt-12 py-4" role="contentinfo">
+            <ul class="flex flex-col md:flex-row justify-center list-none">
+                <li class="md:mr-2">
+                    Feito com &lt; /&gt; por <a href="https://claudsonmartins.com/" title="Claudson Martins">Claudson Martins</a> e contribuidores.
+                </li>
+            </ul>
+        </footer>
+    </body>
+</html>
