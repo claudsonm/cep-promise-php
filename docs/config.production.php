@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'baseUrl' => 'https://my-jigsaw-docs.com',
+    'baseUrl' => 'http://ceppromisephp.claudsonmartins.com',
     'production' => true,
 
     // DocSearch credentials
