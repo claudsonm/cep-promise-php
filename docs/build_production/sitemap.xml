@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
  <url>
-  <loc>https://my-jigsaw-docs.com</loc>
-  <lastmod>2019-12-23T15:38:25+00:00</lastmod>
+  <loc>https://claudsonmartins.com/cep-promise-php</loc>
+  <lastmod>2019-12-23T15:42:26+00:00</lastmod>
   <changefreq>daily</changefreq>
  </url>
  <url>
-  <loc>https://my-jigsaw-docs.com/docs/examples</loc>
-  <lastmod>2019-12-23T15:38:25+00:00</lastmod>
+  <loc>https://claudsonmartins.com/cep-promise-php/docs/examples</loc>
+  <lastmod>2019-12-23T15:42:26+00:00</lastmod>
   <changefreq>daily</changefreq>
  </url>
  <url>
-  <loc>https://my-jigsaw-docs.com/docs/installing</loc>
-  <lastmod>2019-12-23T15:38:25+00:00</lastmod>
+  <loc>https://claudsonmartins.com/cep-promise-php/docs/installing</loc>
+  <lastmod>2019-12-23T15:42:26+00:00</lastmod>
   <changefreq>daily</changefreq>
  </url>
  <url>
-  <loc>https://my-jigsaw-docs.com/docs/about</loc>
-  <lastmod>2019-12-23T15:38:25+00:00</lastmod>
+  <loc>https://claudsonmartins.com/cep-promise-php/docs/about</loc>
+  <lastmod>2019-12-23T15:42:26+00:00</lastmod>
   <changefreq>daily</changefreq>
  </url>
 </urlset>
