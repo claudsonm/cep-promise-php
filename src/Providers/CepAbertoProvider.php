@@ -2,11 +2,11 @@
 
 namespace Claudsonm\CepPromise\Providers;
 
-use Exception;
-use Psr\Http\Message\ResponseInterface;
-use GuzzleHttp\Exception\RequestException;
 use Claudsonm\CepPromise\Contracts\BaseProvider;
 use Claudsonm\CepPromise\Exceptions\CepPromiseProviderException;
+use Exception;
+use GuzzleHttp\Exception\RequestException;
+use Psr\Http\Message\ResponseInterface;
 
 class CepAbertoProvider extends BaseProvider
 {
