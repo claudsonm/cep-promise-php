@@ -128,3 +128,4 @@ finder:
   name: "*.php"
   exclude:
     - vendor
+    - docs
