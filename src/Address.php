@@ -70,4 +70,14 @@ class Address
     {
         return (array) $this;
     }
+
+    /**
+     * Converte a instância da classe em JSON.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return json_encode($this->toArray());
+    }
 }
