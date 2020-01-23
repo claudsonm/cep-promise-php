@@ -2,13 +2,13 @@
 
 namespace Claudsonm\CepPromise;
 
+use Claudsonm\CepPromise\Exceptions\CepPromiseException;
+use Claudsonm\CepPromise\Providers\CepAbertoProvider;
+use Claudsonm\CepPromise\Providers\CorreiosProvider;
+use Claudsonm\CepPromise\Providers\ViaCepProvider;
 use Exception;
 use GuzzleHttp\Promise;
 use GuzzleHttp\Promise\FulfilledPromise;
-use Claudsonm\CepPromise\Providers\ViaCepProvider;
-use Claudsonm\CepPromise\Providers\CorreiosProvider;
-use Claudsonm\CepPromise\Providers\CepAbertoProvider;
-use Claudsonm\CepPromise\Exceptions\CepPromiseException;
 
 /**
  * Efetua a consulta pelas informações de um CEP em diferentes serviços de

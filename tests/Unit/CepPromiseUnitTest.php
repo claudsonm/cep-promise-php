@@ -2,11 +2,11 @@
 
 namespace Claudsonm\CepPromise\Tests\Unit;
 
-use ReflectionMethod;
-use PHPUnit\Framework\TestCase;
 use Claudsonm\CepPromise\Address;
 use Claudsonm\CepPromise\CepPromise;
 use Claudsonm\CepPromise\Exceptions\CepPromiseException;
+use PHPUnit\Framework\TestCase;
+use ReflectionMethod;
 
 class CepPromiseUnitTest extends TestCase
 {
