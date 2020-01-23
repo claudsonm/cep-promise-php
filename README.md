@@ -1,6 +1,7 @@
 # CEP Promise PHP
 [![Build Status](https://travis-ci.org/claudsonm/cep-promise-php.svg?branch=master)](https://travis-ci.org/claudsonm/cep-promise-php)
 [![StyleCI](https://github.styleci.io/repos/177436507/shield?branch=master)](https://github.styleci.io/repos/177436507)
+![Packagist](https://img.shields.io/packagist/dt/claudsonm/cep-promise-php?style=flat-square)
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 Um pacote agnóstico para PHP 7.0+ que efetua a busca de CEPs em diversos serviços utilizando [Promises/A+](https://promisesaplus.com/). 
