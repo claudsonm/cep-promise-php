@@ -29,5 +29,8 @@
         "psr-4": {
             "Claudsonm\\CepPromise\\Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     }
 }

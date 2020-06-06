@@ -16,7 +16,7 @@ para Node.js e web browsers.
 - Feito utilizando a implementação para PHP de promises do pacote [guzzle/promises](https://github.com/guzzle/promises);
 
 ## Instalação
-A maneira mais recomendada de instalar o pacote é via [Composer](https://getcomposer.org/download/).
+A maneira recomendada de instalar o pacote é via [Composer](https://getcomposer.org/download/).
 Com a ferramenta instalada, execute o comando abaixo:
 
 ```bash
