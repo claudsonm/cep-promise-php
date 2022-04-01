@@ -48,7 +48,6 @@ class Address
      * Cria uma nova instância da classe a partir de um array associativo.
      *
      * @param  array  $data
-     *
      * @return Address
      */
     public static function create(array $data = [])
