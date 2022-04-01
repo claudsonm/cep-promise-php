@@ -22,8 +22,7 @@ class CepAbertoProvider extends BaseProvider
     /**
      * Cria a Promise para obter os dados de um CEP no provedor do serviço.
      *
-     * @param string $cep
-     *
+     * @param  string  $cep
      * @return \GuzzleHttp\Promise\Promise
      */
     public function makePromise(string $cep)

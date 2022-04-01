@@ -40,7 +40,6 @@ abstract class BaseProvider implements ProviderInterface
      * Retorna um array associativo com o identificador do provider e a Promise.
      *
      * @param $cep
-     *
      * @return array
      */
     public static function createPromiseArray($cep)

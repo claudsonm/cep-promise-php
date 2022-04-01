@@ -27,8 +27,9 @@ class CepPromise
     /**
      * Busca as informações referente ao CEP informado.
      *
-     * @param  string|int          $cep
+     * @param  string|int  $cep
      * @return Address
+     *
      * @throws CepPromiseException
      */
     public static function fetch($cep)
@@ -39,7 +40,7 @@ class CepPromise
     /**
      * Dispara a cadeia de execução para obtenção das informações do CEP dado.
      *
-     * @param  string|int $cepRawValue
+     * @param  string|int  $cepRawValue
      * @return Address
      */
     public function run($cepRawValue): Address

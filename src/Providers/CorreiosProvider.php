@@ -20,8 +20,7 @@ class CorreiosProvider extends BaseProvider
     /**
      * Cria a Promise para obter os dados de um CEP no provedor do serviço.
      *
-     * @param string $cep
-     *
+     * @param  string  $cep
      * @return \GuzzleHttp\Promise\Promise
      */
     public function makePromise(string $cep)
@@ -90,11 +89,10 @@ class CorreiosProvider extends BaseProvider
      * Converte a string de um XML SOAP em um array, removendo os dois pontos
      * de tags no formato <xxx:yyy>.
      *
-     * @param string $xml
+     * @param  string  $xml
+     * @return array
      *
      * @throws \Exception
-     *
-     * @return array
      */
     private function soapXmlToArray(string $xml)
     {
