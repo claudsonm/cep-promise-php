@@ -122,7 +122,7 @@ class CepPromise
                 CorreiosProvider::createPromiseArray($cepWithLeftPad)
             );
 
-            return Promise\Utils::any($promises);
+            return Promise\any($promises);
         };
     }
 
