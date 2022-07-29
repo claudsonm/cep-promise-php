@@ -27,7 +27,7 @@ class CepAbertoProvider extends BaseProvider
      */
     public function makePromise(string $cep)
     {
-        $url = "http://www.cepaberto.com/api/v2/ceps.json?cep=$cep";
+        $url = "https://www.cepaberto.com/api/v3/cep?cep=$cep";
         $httpVerb = 'GET';
         $options = [
             'headers' => [
@@ -73,6 +73,7 @@ class CepAbertoProvider extends BaseProvider
                 'city' => $responseArray['cidade'],
                 'district' => $responseArray['bairro'],
                 'street' => $responseArray['logradouro'],
+                'provider' => $this->providerIdentifier,
             ];
         };
     }
