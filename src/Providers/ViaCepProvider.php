@@ -53,7 +53,7 @@ class ViaCepProvider extends BaseProvider
     private function checkForViaCepError()
     {
         return function (array $responseArray) {
-            if (isset($responseArray['erro']) && true === $responseArray['erro']) {
+            if (isset($responseArray['erro'])) {
                 throw new Exception('CEP não encontrado na base do ViaCEP.');
             }
 
@@ -70,6 +70,7 @@ class ViaCepProvider extends BaseProvider
                 'city' => $responseArray['localidade'],
                 'district' => $responseArray['bairro'],
                 'street' => $responseArray['logradouro'],
+                'provider' => $this->providerIdentifier,
             ];
         };
     }
