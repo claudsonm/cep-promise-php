@@ -63,6 +63,7 @@ class CorreiosProvider extends BaseProvider
                     'city' => $responseArray['cidade'],
                     'district' => $responseArray['bairro'],
                     'street' => $responseArray['end'],
+                    'provider' => $this->providerIdentifier,
                 ];
             }
 

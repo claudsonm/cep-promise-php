@@ -78,6 +78,7 @@ class CepPromiseUnitTest extends TestCase
             'state' => 'SE',
             'street' => 'Avenida Presidente Juscelino Kubitschek',
             'zipCode' => '49060535',
+            'provider' => 'inline_provider_from_tests',
         ];
     }
 
@@ -94,6 +95,7 @@ class CepPromiseUnitTest extends TestCase
         $address->street = 'Avenida Presidente Juscelino Kubitschek';
         $address->district = 'Santo Antônio';
         $address->zipCode = '49060535';
+        $address->provider = 'inline_provider_from_tests';
 
         return $address;
     }
