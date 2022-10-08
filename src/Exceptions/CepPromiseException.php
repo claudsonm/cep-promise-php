@@ -27,10 +27,9 @@ class CepPromiseException extends \Exception
     {
         $errors = [];
         foreach ($this->errors as $error) {
-            $errors[] = [
-                'provider' => $error->getProvider(),
-                'message' => $error->getMessage(),
-            ];
+            $errors[] = $error instanceof CepPromiseProviderException
+                ? ['provider' => $error->getProvider(), 'message' => $error->getMessage()]
+                : $error;
         }
 
         return [

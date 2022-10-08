@@ -44,13 +44,14 @@ class CepPromise
      * Busca as informações referente ao CEP informado.
      *
      * @param  string|int  $cep
+     * @param  string[]    $providers
      * @return Address
      *
      * @throws CepPromiseException
      */
-    public static function fetch($cep)
+    public static function fetch($cep, array $providers = [])
     {
-        return (new self())->run($cep);
+        return (new self($providers))->run($cep);
     }
 
     /**
