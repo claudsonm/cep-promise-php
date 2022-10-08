@@ -78,8 +78,11 @@ class CorreiosProvider extends BaseProvider
                 $xmlString = $exception->getResponse()->getBody()->getContents();
                 $fault = $this->soapXmlToArray($xmlString);
                 $defaultMessage = 'Erro ao se conectar com o serviço dos Correios.';
+                $message = isset($fault['soapBody']['soapFault']['faultstring'])
+                    ? utf8_decode($fault['soapBody']['soapFault']['faultstring'])
+                    : $defaultMessage;
 
-                throw new Exception($fault['soapBody']['soapFault']['faultstring'] ?? $defaultMessage);
+                throw new Exception($message);
             }
 
             throw $exception;

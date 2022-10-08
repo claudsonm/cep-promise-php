@@ -12,10 +12,30 @@ use Claudsonm\CepPromise\Exceptions\CepPromiseProviderException;
 
 class CorreiosProviderTest extends TestCase
 {
+    public function testItHandlesCorreiosResponseWithNonXml()
+    {
+        $this->expectException(CepPromiseProviderException::class);
+        $this->expectExceptionMessage('Não foi possível interpretar o XML de resposta.');
+
+        $headers = [
+            'Content-Type' => 'text/plain;charset=ISO-8859-1',
+        ];
+        $body = 'Error';
+        $mock = new MockHandler([
+            new Response(500, $headers, $body),
+        ]);
+        $handlerStack = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handlerStack]);
+
+        $viaCep = new CorreiosProvider($client);
+        $promise = $viaCep->makePromise(111111);
+        $promise->wait();
+    }
+
     public function testItProcessCorreiosResponseForInvalidCep()
     {
         $this->expectException(CepPromiseProviderException::class);
-        $this->expectExceptionMessage('CEP INVÃLIDO');
+        $this->expectExceptionMessage('CEP INVÁLIDO');
 
         $headers = [
             'Content-Type' => 'text/xml;charset=ISO-8859-1',
@@ -47,7 +67,7 @@ BODY;
     public function testItProcessCorreiosResponseForValidButNonExistentCep()
     {
         $this->expectException(CepPromiseProviderException::class);
-        $this->expectExceptionMessage('CEP INVÃLIDO');
+        $this->expectExceptionMessage('CEP INVÁLIDO');
 
         $headers = [
             'Content-Type' => 'text/xml;charset=ISO-8859-1',
@@ -73,6 +93,32 @@ BODY;
 
         $viaCep = new CorreiosProvider($client);
         $promise = $viaCep->makePromise(99999999);
+        $promise->wait();
+    }
+
+    public function testItProcessCorreiosResponseForValidExistingButGenericCep()
+    {
+        $this->expectException(CepPromiseProviderException::class);
+        $this->expectExceptionMessage('A busca pelo CEP informado não retornou resultados.');
+
+        $headers = [
+            'Content-Type' => 'text/xml;charset=ISO-8859-1',
+        ];
+        $body = <<<BODY
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <ns2:consultaCEPResponse xmlns:ns2="http://cliente.bean.master.sigep.bsb.correios.com.br/"/>
+    </soap:Body>
+</soap:Envelope>
+BODY;
+        $mock = new MockHandler([
+            new Response(200, $headers, $body),
+        ]);
+        $handlerStack = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handlerStack]);
+
+        $viaCep = new CorreiosProvider($client);
+        $promise = $viaCep->makePromise(49000000);
         $promise->wait();
     }
 
@@ -107,15 +153,11 @@ BODY;
 
         $expectedAddress = [
             'zipCode' => '49048370',
-            'state' => ['sigla' => 'SE'],
-            'city' => [
-                "ddd" => 79,
-                "ibge" => "2800308",
-                "nome" => "Aracaju",
-            ],
+            'state' => 'SE',
+            'city' => 'Aracaju',
             'district' => 'Luzia',
             'street' => 'Rua Vereador Etelvino Barreto',
-            'provider' => 'cep_aberto',
+            'provider' => 'correios',
         ];
 
         $this->assertSame($expectedAddress, $addressData);
