@@ -12,7 +12,7 @@ use Claudsonm\CepPromise\Exceptions\CepPromiseProviderException;
 
 class ViaCepProviderTest extends TestCase
 {
-    public function testItReturnsViaCepApiErrorWhenCepWithoutLeadingZeroIsProvided()
+    public function testItReturnsViaCepApiErrorWhenInvalidCepIsProvided()
     {
         $this->expectException(CepPromiseProviderException::class);
         $this->expectExceptionMessage('Erro ao se conectar com o serviço ViaCEP.');
@@ -28,7 +28,7 @@ class ViaCepProviderTest extends TestCase
         $promise->wait();
     }
 
-    public function testItProcessViaCepApiResponseForNonExistentCep()
+    public function testItProcessViaCepApiResponseForValidButNonExistentCep()
     {
         $this->expectException(CepPromiseProviderException::class);
         $this->expectExceptionMessage('CEP não encontrado na base do ViaCEP.');
