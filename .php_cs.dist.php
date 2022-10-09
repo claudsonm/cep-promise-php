@@ -1,99 +1,40 @@
 <?php
 
-$header = <<<'EOF'
-This file is part of PHP CS Fixer.
-
-(c) Fabien Potencier <fabien@symfony.com>
-    Dariusz Rumiński <dariusz.ruminski@gmail.com>
-
-This source file is subject to the MIT license that is bundled
-with this source code in the file LICENSE.
-EOF;
-
 $finder = PhpCsFixer\Finder::create()
-    ->notPath('bootstrap/cache')
-    ->notPath('node_modules')
-    ->notPath('storage')
-    ->notPath('vendor')
-    ->in(__DIR__)
+    ->in([
+        __DIR__ . '/src',
+        __DIR__ . '/tests',
+    ])
     ->name('*.php')
-    ->notName('*.blade.php')
-    ->notName('_ide_helper.php')
-    ->notName('_ide_helper_models.php')
     ->ignoreDotFiles(true)
-    ->ignoreVCS(true)
-;
+    ->ignoreVCS(true);
 
-$config = PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setUsingCache(false)
     ->setRules([
-        '@PSR2' => true,
-        '@PSR1' => true,
-        '@Symfony' => true,
+        '@PSR12' => true,
         'array_syntax' => ['syntax' => 'short'],
-        'heredoc_to_nowdoc' => true,
-        'linebreak_after_opening_tag' => true,
-        'method_argument_space' => ['on_multiline' => 'ensure_fully_multiline'],
-        'no_useless_return' => true,
+        'ordered_imports' => ['sort_algorithm' => 'alpha'],
+        'no_unused_imports' => true,
         'not_operator_with_successor_space' => true,
-        'ordered_class_elements' => ['sortAlgorithm' => 'alpha'],
-        'ordered_imports' => ['imports_order' => ['const', 'class', 'function']],
-        'phpdoc_add_missing_param_annotation' => ['only_untyped' => false],
-        'phpdoc_order' => true,
-        'phpdoc_types_order' => ['null_adjustment' => 'always_last'],
+        'trailing_comma_in_multiline' => true,
+        'phpdoc_scalar' => true,
+        'unary_operator_spaces' => true,
+        'binary_operator_spaces' => true,
+        'blank_line_before_statement' => [
+            'statements' => ['break', 'continue', 'declare', 'return', 'throw', 'try'],
+        ],
+        'phpdoc_single_line_var_spacing' => true,
+        'phpdoc_var_without_name' => true,
+        'class_attributes_separation' => [
+            'elements' => [
+                'method' => 'one',
+            ],
+        ],
+        'method_argument_space' => [
+            'on_multiline' => 'ensure_fully_multiline',
+            'keep_multiple_spaces_after_comma' => true,
+        ],
+        'single_trait_insert_per_statement' => true,
     ])
-    ->setFinder($finder)
-;
-
-// special handling of fabbot.io service if it's using too old PHP CS Fixer version
-if (false !== getenv('FABBOT_IO')) {
-    try {
-        PhpCsFixer\FixerFactory::create()
-            ->registerBuiltInFixers()
-            ->registerCustomFixers($config->getCustomFixers())
-            ->useRuleSet(new PhpCsFixer\RuleSet($config->getRules()));
-    } catch (PhpCsFixer\ConfigurationException\InvalidConfigurationException $e) {
-        $config->setRules([]);
-    } catch (UnexpectedValueException $e) {
-        $config->setRules([]);
-    } catch (InvalidArgumentException $e) {
-        $config->setRules([]);
-    }
-}
-
-return $config;
-
-/*
-This document has been generated with
-https://mlocati.github.io/php-cs-fixer-configurator/?version=2.13#configurator
-you can change this configuration by importing this YAML code:
-
-version: 2.13.0
-expandSets: false
-fixerSets:
-  - '@PSR2'
-  - '@PSR1'
-  - '@Symfony'
-fixers:
-  array_syntax:
-    syntax: short
-  heredoc_to_nowdoc: true
-  linebreak_after_opening_tag: true
-  method_argument_space:
-    on_multiline: ensure_fully_multiline
-  no_useless_return: true
-  not_operator_with_successor_space: true
-  ordered_class_elements:
-    sortAlgorithm: alpha
-  ordered_imports:
-    imports_order:
-      - const
-      - class
-      - function
-  phpdoc_add_missing_param_annotation:
-    only_untyped: false
-  phpdoc_order: true
-  phpdoc_types_order:
-    null_adjustment: always_last
-
-*/
+    ->setFinder($finder);
