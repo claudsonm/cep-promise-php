@@ -1,10 +1,10 @@
 # CEP Promise PHP
-[![Build Status](https://travis-ci.org/claudsonm/cep-promise-php.svg?branch=master)](https://travis-ci.org/claudsonm/cep-promise-php)
-[![StyleCI](https://github.styleci.io/repos/177436507/shield?branch=master)](https://github.styleci.io/repos/177436507)
-![Packagist](https://img.shields.io/packagist/dt/claudsonm/cep-promise-php?style=flat-square)
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![Run Tests](https://github.com/claudsonm/cep-promise-php/actions/workflows/run-tests.yml/badge.svg)](https://github.com/claudsonm/cep-promise-php/actions/workflows/run-tests.yml)
+[![Check & fix styling](https://github.com/claudsonm/cep-promise-php/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/claudsonm/cep-promise-php/actions/workflows/php-cs-fixer.yml)
+![Packagist](https://img.shields.io/packagist/dt/claudsonm/cep-promise-php)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg)](#contributors)
 
-Um pacote agnóstico para PHP 7.0+ que efetua a busca de CEPs em diversos serviços utilizando [Promises/A+](https://promisesaplus.com/). 
+Um pacote agnóstico para PHP 7.4 e 8.0+ que efetua a busca de CEPs em diversos serviços utilizando [Promises/A+](https://promisesaplus.com/). 
 Inspirado no pacote [CEP Promise](https://github.com/filipedeschamps/cep-promise) 
 para Node.js e web browsers.
 
