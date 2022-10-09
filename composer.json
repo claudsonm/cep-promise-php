@@ -11,14 +11,15 @@
         }
     ],
     "require": {
-        "php": "^7.0",
-        "guzzlehttp/guzzle": "~6.0|~7.0",
+        "php": "^7.4 | ^8.0",
+        "guzzlehttp/guzzle": "~7.2",
         "ext-simplexml": "*",
         "ext-json": "*"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.2",
-        "phpunit/phpunit": "^8.0"
+        "phpunit/phpunit": "^9.0",
+        "friendsofphp/php-cs-fixer": "^3.11"
     },
     "autoload": {
         "psr-4": {

@@ -18,23 +18,40 @@ use GuzzleHttp\Promise\FulfilledPromise;
  */
 class CepPromise
 {
-    const CEP_SIZE = 8;
+    private const CEP_SIZE = 8;
 
-    const ERROR_PROVIDER_CODE = 2;
+    private const ERROR_PROVIDER_CODE = 2;
 
-    const ERROR_VALIDATION_CODE = 1;
+    private const ERROR_VALIDATION_CODE = 1;
+
+    /**
+     * Array com todos os FQCN dos providers onde os CEPs serão consultados.
+     *
+     * @var array|string[]
+     */
+    protected array $providers;
+
+    public function __construct(array $providers = [])
+    {
+        $this->providers = ! empty($providers) ? $providers : [
+            ViaCepProvider::class,
+            CepAbertoProvider::class,
+            CorreiosProvider::class,
+        ];
+    }
 
     /**
      * Busca as informações referente ao CEP informado.
      *
      * @param  string|int  $cep
+     * @param  string[]    $providers
      * @return Address
      *
      * @throws CepPromiseException
      */
-    public static function fetch($cep)
+    public static function fetch($cep, array $providers = [])
     {
-        return (new self())->run($cep);
+        return (new self($providers))->run($cep);
     }
 
     /**
@@ -116,11 +133,10 @@ class CepPromise
     private function fetchCepFromProviders()
     {
         return function (string $cepWithLeftPad) {
-            $promises = array_merge(
-                ViaCepProvider::createPromiseArray($cepWithLeftPad),
-                CepAbertoProvider::createPromiseArray($cepWithLeftPad),
-                CorreiosProvider::createPromiseArray($cepWithLeftPad)
-            );
+            $promises = [];
+            foreach ($this->providers as $provider) {
+                $promises = array_merge($promises, $provider::createPromiseArray($cepWithLeftPad));
+            }
 
             return Promise\Utils::any($promises);
         };
