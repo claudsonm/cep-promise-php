@@ -2,8 +2,8 @@
 
 namespace Claudsonm\CepPromise\Tests\fixtures\stubs;
 
-use GuzzleHttp\Promise\Promise;
 use Claudsonm\CepPromise\Contracts\BaseProvider;
+use GuzzleHttp\Promise\Promise;
 
 class SuccessfulProviderStub extends BaseProvider
 {

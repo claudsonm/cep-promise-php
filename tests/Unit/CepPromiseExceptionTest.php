@@ -2,9 +2,9 @@
 
 namespace Claudsonm\CepPromise\Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
 use Claudsonm\CepPromise\Exceptions\CepPromiseException;
 use Claudsonm\CepPromise\Exceptions\CepPromiseProviderException;
+use PHPUnit\Framework\TestCase;
 
 class CepPromiseExceptionTest extends TestCase
 {

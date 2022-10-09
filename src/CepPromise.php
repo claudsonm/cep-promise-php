@@ -33,7 +33,7 @@ class CepPromise
 
     public function __construct(array $providers = [])
     {
-        $this->providers = !empty($providers) ? $providers : [
+        $this->providers = ! empty($providers) ? $providers : [
             ViaCepProvider::class,
             CepAbertoProvider::class,
             CorreiosProvider::class,

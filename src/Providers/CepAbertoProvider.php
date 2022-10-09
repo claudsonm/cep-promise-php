@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 
 class CepAbertoProvider extends BaseProvider
 {
-    const CEP_ABERTO_TOKEN = '37d718d2984e6452584a76d3d59d3a26';
+    public const CEP_ABERTO_TOKEN = '37d718d2984e6452584a76d3d59d3a26';
 
     /**
      * O nome identificador do provedor de serviço.

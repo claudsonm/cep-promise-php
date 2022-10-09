@@ -2,14 +2,13 @@
 
 namespace Claudsonm\CepPromise\Tests\Unit;
 
+use Claudsonm\CepPromise\Exceptions\CepPromiseProviderException;
+use Claudsonm\CepPromise\Providers\CepAbertoProvider;
 use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
-use GuzzleHttp\Handler\MockHandler;
-use Claudsonm\CepPromise\Providers\ViaCepProvider;
-use Claudsonm\CepPromise\Providers\CepAbertoProvider;
-use Claudsonm\CepPromise\Exceptions\CepPromiseProviderException;
 
 class CepAbertoProviderTest extends TestCase
 {

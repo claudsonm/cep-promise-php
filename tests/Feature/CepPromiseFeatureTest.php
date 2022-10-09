@@ -5,9 +5,9 @@ namespace Claudsonm\CepPromise\Tests\Feature;
 use Claudsonm\CepPromise\Address;
 use Claudsonm\CepPromise\CepPromise;
 use Claudsonm\CepPromise\Exceptions\CepPromiseException;
-use PHPUnit\Framework\TestCase;
 use Claudsonm\CepPromise\Tests\fixtures\stubs\FailureProviderStub;
 use Claudsonm\CepPromise\Tests\fixtures\stubs\SuccessfulProviderStub;
+use PHPUnit\Framework\TestCase;
 
 class CepPromiseFeatureTest extends TestCase
 {

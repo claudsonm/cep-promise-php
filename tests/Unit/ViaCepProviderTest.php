@@ -2,13 +2,13 @@
 
 namespace Claudsonm\CepPromise\Tests\Unit;
 
+use Claudsonm\CepPromise\Exceptions\CepPromiseProviderException;
+use Claudsonm\CepPromise\Providers\ViaCepProvider;
 use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
-use GuzzleHttp\Handler\MockHandler;
-use Claudsonm\CepPromise\Providers\ViaCepProvider;
-use Claudsonm\CepPromise\Exceptions\CepPromiseProviderException;
 
 class ViaCepProviderTest extends TestCase
 {

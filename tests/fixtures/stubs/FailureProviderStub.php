@@ -2,9 +2,9 @@
 
 namespace Claudsonm\CepPromise\Tests\fixtures\stubs;
 
-use GuzzleHttp\Promise\Promise;
 use Claudsonm\CepPromise\Contracts\BaseProvider;
 use Claudsonm\CepPromise\Exceptions\CepPromiseException;
+use GuzzleHttp\Promise\Promise;
 
 class FailureProviderStub extends BaseProvider
 {
