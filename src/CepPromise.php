@@ -130,7 +130,7 @@ class CepPromise
         };
     }
 
-    protected function fetchCepFromProviders()
+    private function fetchCepFromProviders()
     {
         return function (string $cepWithLeftPad) {
             $promises = [];
