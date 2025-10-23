@@ -5,6 +5,7 @@ namespace Claudsonm\CepPromise;
 use Claudsonm\CepPromise\Exceptions\CepPromiseException;
 use Claudsonm\CepPromise\Providers\CepAbertoProvider;
 use Claudsonm\CepPromise\Providers\CorreiosProvider;
+use Claudsonm\CepPromise\Providers\OpenCepProvider;
 use Claudsonm\CepPromise\Providers\ViaCepProvider;
 use Exception;
 use GuzzleHttp\Promise;
@@ -35,6 +36,7 @@ class CepPromise
     {
         $this->providers = ! empty($providers) ? $providers : [
             ViaCepProvider::class,
+            OpenCepProvider::class,
             CepAbertoProvider::class,
             CorreiosProvider::class,
         ];

@@ -136,13 +136,19 @@ Array
                     [message] => CEP não encontrado na base do ViaCEP.
                 )
 
-            [1] => Array
+            [2] => Array
+                (
+                    [provider] => open_cep
+                    [message] => CEP não encontrado na base do OpenCEP.
+                )                
+
+            [3] => Array
                 (
                     [provider] => cep_aberto
                     [message] => Erro ao se conectar com o serviço CEP Aberto.
                 )
 
-            [2] => Array
+            [4] => Array
                 (
                     [provider] => correios
                     [message] => CEP INVÁLIDO
